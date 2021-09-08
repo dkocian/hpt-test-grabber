@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  webdevelop:
+    image: webdevops/php-nginx:7.3
+    container_name: hpt_test_grabber
+    volumes:
+      - ./:/app
