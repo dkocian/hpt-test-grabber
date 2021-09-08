@@ -32,6 +32,8 @@ require_once __DIR__ . "/vendor/autoload.php";
                 "detail_link" => "#tiles .tile-link",
                 "product_price" => "#product-price-and-delivery-section .total-price .price-vatin",
                 "product_number" => ".pd-info .pd-next-in-category__item-value",
+                "product_name" => ".pd-wrap h1",
+                "product_rating" => ".pd-header .rating__label",
             ]
         ];
         $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);

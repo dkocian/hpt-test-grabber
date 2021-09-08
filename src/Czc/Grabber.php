@@ -53,7 +53,9 @@ class Grabber implements GrabberInterface
             }
 
             return (new Product())
-                ->setPrice($this->grabPrice($crawler));
+                ->setPrice($this->grabPrice($crawler))
+                ->setName($this->grabName($crawler))
+                ->setRating($this->grabRating($crawler));
         }
         return null;
     }
@@ -160,5 +162,47 @@ class Grabber implements GrabberInterface
     public function getPriceFilter(): string
     {
         return $this->config["filter"]["product_price"];
+    }
+
+    /**
+     * @param Crawler $crawler
+     * @return string|null
+     */
+    private function grabName(Crawler $crawler): ?string
+    {
+        $node = $crawler->filter($this->getProductNameFilter());
+        if ($node->count() === 0) {
+            return null;
+        }
+        return $node->text();
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductNameFilter(): string
+    {
+        return $this->config["filter"]["product_name"];
+    }
+
+    /**
+     * @param Crawler $crawler
+     * @return float|null
+     */
+    private function grabRating(Crawler $crawler): ?float
+    {
+        $node = $crawler->filter($this->getProductRatingFilter());
+        if ($node->count() === 0) {
+            return null;
+        }
+        return $this->numberHelper->parseFloat($node->first()->text());
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductRatingFilter(): string
+    {
+        return $this->config["filter"]["product_rating"];
     }
 }

@@ -11,6 +11,19 @@
    
     ![zadání 1](img1.jpg)
 
-1. Rozšiř aplikaci z bodu 1, aby získávala i název produktu a jeho procentuální hodnocení. Odpovídajícím způsobem rozšiř výstupní data.
+2. Rozšiř aplikaci z bodu 1, aby získávala i název produktu a jeho procentuální hodnocení. Odpovídajícím způsobem rozšiř výstupní data.
 
     ![zadání 2](img2.jpg)
+
+### Spuštění aplikace mimo docker
+```bash
+php composer.phar install
+php run.php vstup.txt
+```
+
+### Spuštění aplikace v připraveném dockeru
+```bash
+cd app/
+php composer.phar install
+php run.php vstup.txt
+```
